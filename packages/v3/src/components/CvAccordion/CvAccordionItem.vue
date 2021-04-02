@@ -1,14 +1,13 @@
 <template>
   <li
     data-accordion-item
-    class="cv-accordion-item"
+    v-cv
     :class="[
-      `${carbonPrefix}--accordion__item`,
-
+      `cv--accordion__item`,
       {
-        [`${carbonPrefix}--accordion__item--disabled`]: disabled,
-        [`${carbonPrefix}--accordion__item--active`]: isOpen,
-        [`${carbonPrefix}--accordion__item--${animation}`]: animation,
+        [`cv--accordion__item--disabled`]: disabled,
+        [`cv--accordion__item--active`]: isOpen,
+        [`cv--accordion__item--${animation}`]: animation,
       },
     ]"
     @animationend="onAnimationEnd"
@@ -17,18 +16,19 @@
       :disabled="disabled"
       ref="button"
       type="button"
-      :class="`${carbonPrefix}--accordion__heading`"
+      v-cv
+      :class="`cv--accordion__heading`"
       :aria-expanded="isOpen ? 'true' : 'false'"
       :aria-controls="cvId"
       @click.prevent.stop="onClick"
     >
-      <ChevronRight16 :class="`${carbonPrefix}--accordion__arrow`" />
-      <p :class="`${carbonPrefix}--accordion__title`">
+      <ChevronRight16 v-cv :class="`cv--accordion__arrow`" />
+      <p v-cv :class="`cv--accordion__title`">
         <!-- @slot title of the accordion item -->
         <slot name="title"></slot>
       </p>
     </button>
-    <div :id="cvId" :class="`${carbonPrefix}--accordion__content`">
+    <div :id="cvId" v-cv :class="`cv--accordion__content`">
       <!-- @slot content of accordion item -->
       <slot name="content"></slot>
     </div>
@@ -37,6 +37,7 @@
 
 <script>
 import { onMounted, onBeforeUnmount, inject, ref } from 'vue';
+import Cv from '../../directives/Cv';
 import { carbonPrefix } from '../../global/settings';
 import { useCvId, props as propsCvId } from '../../use/cvId';
 import { ChevronRight16 } from '@carbon/icons-vue/';
@@ -45,6 +46,7 @@ const { id } = propsCvId;
 
 export default {
   name: 'CvAccordionItem',
+  directives: { Cv },
   components: { ChevronRight16 },
   props: {
     /**

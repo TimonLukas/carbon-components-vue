@@ -1,11 +1,12 @@
 <template>
   <ul
     data-accordion
+    v-cv
     :class="[
-      `cv-accordion ${carbonPrefix}--accordion`,
+      `cv--accordion`,
       {
-        [`${carbonPrefix}--accordion--${align}`]: align,
-        [`${carbonPrefix}--accordion--${size}`]: size,
+        [`cv--accordion--${align}`]: align,
+        [`cv--accordion--${size}`]: size,
       },
     ]"
   >
@@ -16,10 +17,12 @@
 <script>
 import { computed, provide, reactive } from 'vue';
 import { carbonPrefix } from '../../global/settings';
+import Cv from '../../directives/Cv';
 import { alignConsts, sizeConsts } from './consts';
 
 export default {
   name: 'CvAccordion',
+  directives: { Cv },
   props: {
     /**
      * optional align, defaults to 'end'
