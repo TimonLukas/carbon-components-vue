@@ -50,7 +50,7 @@ export default {
       default: false,
     },
     /** (if oneline/multiline) A11y label */
-    ariaLabel: {
+    feedbackAriaLabel: {
       type: String,
       default: '',
     },

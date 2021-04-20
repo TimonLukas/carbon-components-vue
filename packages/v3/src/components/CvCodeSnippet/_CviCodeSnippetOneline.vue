@@ -72,7 +72,7 @@ export default {
       default: false,
     },
     /** A11y label */
-    ariaLabel: {
+    feedbackAriaLabel: {
       type: String,
       default: '',
     },

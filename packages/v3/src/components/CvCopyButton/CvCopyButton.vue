@@ -1,7 +1,6 @@
 <template>
   <cvi-copy-button
     :class="`${carbonPrefix}--copy-btn`"
-    :aria-label="iconDescription"
     :title="iconDescription"
     :feedback="feedback"
     :feedback-timeout="feedbackTimeout"

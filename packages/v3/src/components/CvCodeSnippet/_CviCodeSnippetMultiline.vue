@@ -14,7 +14,7 @@
   >
     <div
       :class="`${carbonPrefix}--snippet-container`"
-      :aria-label="ariaLabel || 'code-snippet'"
+      :aria-label="feedbackAriaLabel || 'code-snippet'"
       :style="styles"
     >
       <pre ref="text"><code><slot /></code></pre>
@@ -31,7 +31,7 @@
       v-if="!hideCopyButton"
       :feedback="copyFeedback"
       :feedback-timeout="copyFeedbackTimeout"
-      :icon-description="ariaLabel"
+      :icon-description="copyFeedback"
       @copy="handleCopy"
       :disabled="disabled"
     />
@@ -94,7 +94,7 @@ export default {
       default: false,
     },
     /** A11y label */
-    ariaLabel: {
+    feedbackAriaLabel: {
       type: String,
       default: '',
     },
